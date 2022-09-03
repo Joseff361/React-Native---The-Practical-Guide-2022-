@@ -3,10 +3,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useState, useMemo } from 'react';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
-import GameOver from './screens/GameOver';
+import GameOverScreen from './screens/GameOverScreen';
 import Colors from './constants/colors';
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
   const currentScreen = useMemo(() => {
     if (gameIsOver)
       return (
-        <GameOver
+        <GameOverScreen
           userNumber={userNumber}
           roundsNumber={guessRound}
           onStartNewGame={startNewGameHandler}
@@ -57,20 +58,23 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      colors={[Colors.primary700, Colors.accent500]}
-      style={styles.rootScreen}
-    >
-      <ImageBackground
-        source={require('./assets/images/background.png')}
-        // takes all the avaiable space but not distorting it, just zooming it
-        resizeMode="cover"
+    <>
+      <StatusBar style="light" />
+      <LinearGradient
+        colors={[Colors.primary700, Colors.accent500]}
         style={styles.rootScreen}
-        imageStyle={styles.backgroundImage}
       >
-        <SafeAreaView style={styles.rootScreen}>{currentScreen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require('./assets/images/background.png')}
+          // takes all the avaiable space but not distorting it, just zooming it
+          resizeMode="cover"
+          style={styles.rootScreen}
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>{currentScreen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 

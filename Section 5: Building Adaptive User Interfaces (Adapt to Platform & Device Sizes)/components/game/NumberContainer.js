@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Dimensions } from 'react-native';
 
 import Colors from '../../constants/colors';
 
@@ -10,19 +10,27 @@ function NumberContainer({ children }) {
   );
 }
 
+/*
+  window: all the space without status bar
+  screen: all the space including status bar
+  fontScale is the font selected by the user in its own device
+*/
+
+const deviceWitdh = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
     borderWidth: 4,
     borderColor: Colors.accent500,
-    padding: 24,
+    padding: deviceWitdh < 380 ? 12 : 24,
     borderRadius: 8,
-    margin: 24,
+    margin: deviceWitdh < 380 ? 12 : 24,
     alignItems: 'center',
     justifyContent: 'center',
   },
   numberText: {
     color: Colors.accent500,
-    fontSize: 36,
+    fontSize: deviceWitdh < 380 ? 28 : 36,
     fontFamily: 'open-sans-bold',
   },
 });
