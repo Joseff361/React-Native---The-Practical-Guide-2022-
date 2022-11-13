@@ -3,11 +3,13 @@ import { FlatList } from 'react-native';
 import CategoryGridTitlte from '../components/CategoryGridTitlte';
 import { CATEGORIES } from '../data/dummy-data';
 
-// Special prop provided by Stack Navigation when you register this component as Stack.Screen
-function CategoriesScreen({ navigation }) {
+// Special props provided by Stack Navigation when you register this component as Stack.Screen
+function CategoriesScreen({ navigation, route }) {
   const renderCategoryItem = itemData => {
     const pressHandler = () => {
-      navigation.navigate('MealsOverview');
+      navigation.navigate('MealsOverview', {
+        categoryId: itemData.item.id,
+      });
     };
 
     return (

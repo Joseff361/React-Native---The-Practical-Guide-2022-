@@ -1,8 +1,9 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Pressable, StyleSheet, Text, View, Platform } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 function CategoryGridTitlte({ title, color, onPress }) {
   //const navigation = useNavigation();
+  // const route = useRoukte();
 
   return (
     <View style={styles.gridItem}>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     margin: 16,
     height: 150,
     borderRadius: 8,
-    overflow: 'hidden',
+    overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
     // Android
     elevation: 4,
     backgroundColor: 'white',
