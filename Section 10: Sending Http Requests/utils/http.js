@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://react-native-Acourse-3b91d-default-rtdb.firebaseio.com';
+const baseUrl = 'https://react-native-course-3b91d-default-rtdb.firebaseio.com';
 
 export async function storeExpense(expenseData) {
   // The json extension is required by firebase to understand
