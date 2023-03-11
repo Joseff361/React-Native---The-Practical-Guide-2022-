@@ -1,3 +1,4 @@
+import { SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -5,24 +6,26 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllPlaces from './screens/AllPlaces';
 import AddPlace from './screens/AddPlace';
 import IconButton from './components/UI/IconButton';
-import {Colors} from './constants/colors'
+import { Colors } from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar style="dark" />
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-          headerStyle: {
-            backgroundColor: Colors.primary500
-          },
-          headerTintColor: Colors.gray700,
-          contentStyle: {
-            backgroundColor: Colors.gray700
-          }
-        }}>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: Colors.primary500,
+            },
+            headerTintColor: Colors.gray700,
+            contentStyle: {
+              backgroundColor: Colors.gray700,
+            },
+          }}
+        >
           <Stack.Screen
             name="AllPlaces"
             component={AllPlaces}
@@ -45,6 +48,6 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </SafeAreaView>
   );
 }
